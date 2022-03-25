@@ -21,6 +21,29 @@
     }
     //使用定时器每秒向div写入当前时间
     setInterval("getDate()",1000);
+    
+    
+    <!--上传图片-->
+            function ProcessFile(e) {undefined
+            var file = document.getElementById('file').files[0];
+            if (file) {undefined
+                var reader = new FileReader();
+                reader.onload = function (event) {undefined
+                    var txt = event.target.result;
+                    var img = document.getElementById("avtar");
+                    img.src = txt;//将图片base64字符串赋值给img的src
+                };
+            }
+            reader.readAsDataURL(file);
+        }
+
+        function contentLoaded() {undefined
+            document.getElementById('file').addEventListener('change',
+                ProcessFile, false);
+        }
+
+        window.addEventListener("DOMContentLoaded", contentLoaded, false);
+
 </script>
 <style type="text/css">
         .whiteFont {
@@ -134,7 +157,7 @@
       <!--新版证件照-->  
         
         <div id="qr" class="tcenter" style="padding: 10px;height:170px;">
-                                <img width="110px" height="160px" src=imgs/www.png>
+                                <img id="avtar" width="110px" height="160px" src=imgs/www.png>
                         
         </div>
     
